@@ -1,0 +1,2403 @@
+#VRML_SIM R2025a utf8
+
+WorldInfo {
+  info [
+    "Task 1b - Line follower"
+    "Robot is the Task 1a chassis (0.30 x 0.15 x 0.05 m) plus 3 IR ground sensors."
+    "Press PLAY - the robot follows the loop on its own."
+  ]
+  title "Task 1b - Line Follower"
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+      material1 "wheel"
+      coulombFriction [
+        1.5
+      ]
+      softCFM 0.0001
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.5773502691896258 -0.5773502691896258 -0.5773502691896258 4.188785307179587
+  position 0 0 4.123105625617661
+}
+Background {
+  skyColor [
+    0.21 0.27 0.36
+  ]
+}
+DirectionalLight {
+  ambientIntensity 0.55
+  direction -0.6 -0.5 -1
+  intensity 2.5
+  castShadows TRUE
+}
+DirectionalLight {
+  ambientIntensity 0.3
+  direction 0.7 0.5 -0.6
+  intensity 1.2
+}
+Solid {
+  translation 0 0 -0.01
+  children [
+    DEF FLOOR Shape {
+      appearance PBRAppearance {
+        baseColor 0.93 0.93 0.94
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 4 4 0.02
+      }
+    }
+  ]
+  name "floor"
+  boundingObject USE FLOOR
+}
+Solid {
+  translation 0 2.01 0.06
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColor 0.38 0.41 0.47
+        roughness 0.8
+        metalness 0
+      }
+      geometry Box {
+        size 4.04 0.02 0.12
+      }
+    }
+  ]
+  name "wall_north"
+  boundingObject USE WALL
+}
+Solid {
+  translation 0 -2.01 0.06
+  children [
+    USE WALL
+  ]
+  name "wall_south"
+  boundingObject USE WALL
+}
+Solid {
+  translation 2.01 0 0.06
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL
+  ]
+  name "wall_east"
+  boundingObject USE WALL
+}
+Solid {
+  translation -2.01 0 0.06
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL
+  ]
+  name "wall_west"
+  boundingObject USE WALL
+}
+Solid {
+  children [
+    Pose {
+      translation 1.1996 0.0225 0.002
+      rotation 0 0 1 1.589267
+      children [
+        DEF LINE_SEG Shape {
+          appearance PBRAppearance {
+            baseColor 0.02 0.02 0.02
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.0562 0.03 0.004
+          }
+        }
+      ]
+    }
+    Pose {
+      translation 1.1979 0.0675 0.002
+      rotation 0 0 1 1.62647
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1946 0.1125 0.002
+      rotation 0 0 1 1.664469
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1895 0.1573 0.002
+      rotation 0 0 1 1.703741
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1826 0.2018 0.002
+      rotation 0 0 1 1.744796
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1738 0.246 0.002
+      rotation 0 0 1 1.78836
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.163 0.2898 0.002
+      rotation 0 0 1 1.835058
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1502 0.3329 0.002
+      rotation 0 0 1 1.88557
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1351 0.3753 0.002
+      rotation 0 0 1 1.940841
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1175 0.4168 0.002
+      rotation 0 0 1 2.001786
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.0973 0.4571 0.002
+      rotation 0 0 1 2.069208
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.0743 0.4959 0.002
+      rotation 0 0 1 2.143653
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.0484 0.5326 0.002
+      rotation 0 0 1 2.225352
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.0195 0.5671 0.002
+      rotation 0 0 1 2.314016
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.9875 0.5987 0.002
+      rotation 0 0 1 2.408315
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.9526 0.6272 0.002
+      rotation 0 0 1 2.505595
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.9152 0.6521 0.002
+      rotation 0 0 1 2.602518
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.8755 0.6734 0.002
+      rotation 0 0 1 2.695713
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.8341 0.6911 0.002
+      rotation 0 0 1 2.781919
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.7914 0.7053 0.002
+      rotation 0 0 1 2.859008
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.7477 0.7164 0.002
+      rotation 0 0 1 2.926058
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.7034 0.7248 0.002
+      rotation 0 0 1 2.982837
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.6588 0.7308 0.002
+      rotation 0 0 1 3.029974
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.6139 0.735 0.002
+      rotation 0 0 1 3.068481
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.569 0.7376 0.002
+      rotation 0 0 1 3.099284
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.5239 0.7389 0.002
+      rotation 0 0 1 3.12336
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.4788 0.7394 0.002
+      rotation 0 0 1 -3.141532
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.4337 0.7391 0.002
+      rotation 0 0 1 -3.12823
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.3885 0.7382 0.002
+      rotation 0 0 1 -3.119207
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.3434 0.7371 0.002
+      rotation 0 0 1 -3.113835
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.2983 0.7358 0.002
+      rotation 0 0 1 -3.11155
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.2532 0.7345 0.002
+      rotation 0 0 1 -3.11185
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.208 0.7332 0.002
+      rotation 0 0 1 -3.11428
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.163 0.732 0.002
+      rotation 0 0 1 -3.11841
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.118 0.7311 0.002
+      rotation 0 0 1 -3.123844
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.0729 0.7305 0.002
+      rotation 0 0 1 -3.130223
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.0278 0.7301 0.002
+      rotation 0 0 1 -3.137176
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.0172 0.7301 0.002
+      rotation 0 0 1 3.138847
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.0624 0.7303 0.002
+      rotation 0 0 1 3.131809
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.1075 0.7309 0.002
+      rotation 0 0 1 3.125261
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.1525 0.7318 0.002
+      rotation 0 0 1 3.119571
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.1975 0.7329 0.002
+      rotation 0 0 1 3.115104
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.2426 0.7341 0.002
+      rotation 0 0 1 3.112246
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.2876 0.7355 0.002
+      rotation 0 0 1 3.111405
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.3326 0.7368 0.002
+      rotation 0 0 1 3.113029
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.3777 0.738 0.002
+      rotation 0 0 1 3.117611
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.4228 0.7389 0.002
+      rotation 0 0 1 3.125701
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.468 0.7393 0.002
+      rotation 0 0 1 3.137915
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.5131 0.7391 0.002
+      rotation 0 0 1 -3.128233
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.5582 0.738 0.002
+      rotation 0 0 1 -3.105595
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.6032 0.7357 0.002
+      rotation 0 0 1 -3.076485
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.6482 0.732 0.002
+      rotation 0 0 1 -3.039891
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.6929 0.7264 0.002
+      rotation 0 0 1 -2.994795
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.7373 0.7186 0.002
+      rotation 0 0 1 -2.940307
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.7811 0.7082 0.002
+      rotation 0 0 1 -2.875761
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.8241 0.6947 0.002
+      rotation 0 0 1 -2.801035
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.8659 0.6779 0.002
+      rotation 0 0 1 -2.71683
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.906 0.6575 0.002
+      rotation 0 0 1 -2.625039
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.944 0.6334 0.002
+      rotation 0 0 1 -2.5286
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.9795 0.6057 0.002
+      rotation 0 0 1 -2.430994
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.0122 0.5748 0.002
+      rotation 0 0 1 -2.33581
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.0418 0.541 0.002
+      rotation 0 0 1 -2.245735
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.0685 0.5047 0.002
+      rotation 0 0 1 -2.162308
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.0921 0.4664 0.002
+      rotation 0 0 1 -2.086126
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.113 0.4265 0.002
+      rotation 0 0 1 -2.017179
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1311 0.3853 0.002
+      rotation 0 0 1 -1.954845
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1468 0.343 0.002
+      rotation 0 0 1 -1.898242
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1602 0.3 0.002
+      rotation 0 0 1 -1.846574
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1715 0.2563 0.002
+      rotation 0 0 1 -1.798974
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1807 0.2121 0.002
+      rotation 0 0 1 -1.754736
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.188 0.1677 0.002
+      rotation 0 0 1 -1.713129
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1935 0.1229 0.002
+      rotation 0 0 1 -1.673494
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1973 0.0781 0.002
+      rotation 0 0 1 -1.635309
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1993 0.033 0.002
+      rotation 0 0 1 -1.59793
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1997 -0.0121 0.002
+      rotation 0 0 1 -1.560902
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1984 -0.0571 0.002
+      rotation 0 0 1 -1.523774
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1955 -0.1021 0.002
+      rotation 0 0 1 -1.486018
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1908 -0.1469 0.002
+      rotation 0 0 1 -1.447083
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1843 -0.1916 0.002
+      rotation 0 0 1 -1.406382
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.176 -0.2359 0.002
+      rotation 0 0 1 -1.363452
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1657 -0.2797 0.002
+      rotation 0 0 1 -1.317609
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1533 -0.323 0.002
+      rotation 0 0 1 -1.268
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1388 -0.3656 0.002
+      rotation 0 0 1 -1.213883
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1218 -0.4074 0.002
+      rotation 0 0 1 -1.154365
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.1022 -0.448 0.002
+      rotation 0 0 1 -1.088528
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.0799 -0.4871 0.002
+      rotation 0 0 1 -1.015778
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.0546 -0.5244 0.002
+      rotation 0 0 1 -0.935652
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -1.0264 -0.5594 0.002
+      rotation 0 0 1 -0.848428
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.995 -0.5918 0.002
+      rotation 0 0 1 -0.755252
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.9608 -0.621 0.002
+      rotation 0 0 1 -0.658282
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.9239 -0.6468 0.002
+      rotation 0 0 1 -0.560893
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.8847 -0.6689 0.002
+      rotation 0 0 1 -0.466616
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.8437 -0.6873 0.002
+      rotation 0 0 1 -0.378692
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.8013 -0.7023 0.002
+      rotation 0 0 1 -0.299455
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.7579 -0.7141 0.002
+      rotation 0 0 1 -0.230157
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.7137 -0.723 0.002
+      rotation 0 0 1 -0.171083
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.6692 -0.7296 0.002
+      rotation 0 0 1 -0.121736
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.6244 -0.7342 0.002
+      rotation 0 0 1 -0.081309
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.5794 -0.7371 0.002
+      rotation 0 0 1 -0.048808
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.5343 -0.7387 0.002
+      rotation 0 0 1 -0.023244
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.4892 -0.7393 0.002
+      rotation 0 0 1 -0.003697
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.4442 -0.7392 0.002
+      rotation 0 0 1 0.01067
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.3991 -0.7385 0.002
+      rotation 0 0 1 0.020618
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.354 -0.7374 0.002
+      rotation 0 0 1 0.02679
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.309 -0.7361 0.002
+      rotation 0 0 1 0.029751
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.264 -0.7348 0.002
+      rotation 0 0 1 0.030026
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.219 -0.7335 0.002
+      rotation 0 0 1 0.028075
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.1739 -0.7323 0.002
+      rotation 0 0 1 0.024318
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.1288 -0.7313 0.002
+      rotation 0 0 1 0.019148
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.0836 -0.7306 0.002
+      rotation 0 0 1 0.012952
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation -0.0385 -0.7302 0.002
+      rotation 0 0 1 0.006106
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.0065 -0.73 0.002
+      rotation 0 0 1 -0.001036
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.0515 -0.7303 0.002
+      rotation 0 0 1 -0.008126
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.0966 -0.7308 0.002
+      rotation 0 0 1 -0.014815
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.1417 -0.7316 0.002
+      rotation 0 0 1 -0.020749
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.1868 -0.7326 0.002
+      rotation 0 0 1 -0.025549
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.2318 -0.7338 0.002
+      rotation 0 0 1 -0.028833
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.277 -0.7352 0.002
+      rotation 0 0 1 -0.030194
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.322 -0.7365 0.002
+      rotation 0 0 1 -0.029193
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.3671 -0.7377 0.002
+      rotation 0 0 1 -0.02536
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.4122 -0.7387 0.002
+      rotation 0 0 1 -0.018156
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.4573 -0.7393 0.002
+      rotation 0 0 1 -0.006979
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.5024 -0.7392 0.002
+      rotation 0 0 1 0.00882
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.5474 -0.7384 0.002
+      rotation 0 0 1 0.030025
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.5925 -0.7364 0.002
+      rotation 0 0 1 0.057544
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.6375 -0.733 0.002
+      rotation 0 0 1 0.092278
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.6823 -0.7279 0.002
+      rotation 0 0 1 0.135214
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.7267 -0.7207 0.002
+      rotation 0 0 1 0.187326
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.7706 -0.7109 0.002
+      rotation 0 0 1 0.249346
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.8138 -0.6982 0.002
+      rotation 0 0 1 0.321649
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.856 -0.6823 0.002
+      rotation 0 0 1 0.403745
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.8965 -0.6627 0.002
+      rotation 0 0 1 0.493984
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.9351 -0.6395 0.002
+      rotation 0 0 1 0.589617
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 0.9712 -0.6127 0.002
+      rotation 0 0 1 0.687242
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.0046 -0.5825 0.002
+      rotation 0 0 1 0.783354
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.035 -0.5493 0.002
+      rotation 0 0 1 0.874929
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.0624 -0.5136 0.002
+      rotation 0 0 1 0.96007
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.0868 -0.4757 0.002
+      rotation 0 0 1 1.038008
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1082 -0.4361 0.002
+      rotation 0 0 1 1.108634
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.127 -0.3952 0.002
+      rotation 0 0 1 1.172507
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1433 -0.3532 0.002
+      rotation 0 0 1 1.230374
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1572 -0.3103 0.002
+      rotation 0 0 1 1.283045
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1689 -0.2668 0.002
+      rotation 0 0 1 1.331502
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1786 -0.2228 0.002
+      rotation 0 0 1 1.376459
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1864 -0.1784 0.002
+      rotation 0 0 1 1.418659
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1924 -0.1336 0.002
+      rotation 0 0 1 1.458772
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1965 -0.0887 0.002
+      rotation 0 0 1 1.49733
+      children [
+        USE LINE_SEG
+      ]
+    }
+    Pose {
+      translation 1.1991 -0.0331 0.002
+      rotation 0 0 1 1.54358
+      children [
+        USE LINE_SEG
+      ]
+    }
+  ]
+  name "line"
+  boundingObject Group {
+    children [
+      Pose {
+        translation 1.1996 0.0225 0.002
+        rotation 0 0 1 1.589267
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1979 0.0675 0.002
+        rotation 0 0 1 1.62647
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1946 0.1125 0.002
+        rotation 0 0 1 1.664469
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1895 0.1573 0.002
+        rotation 0 0 1 1.703741
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1826 0.2018 0.002
+        rotation 0 0 1 1.744796
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1738 0.246 0.002
+        rotation 0 0 1 1.78836
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.163 0.2898 0.002
+        rotation 0 0 1 1.835058
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1502 0.3329 0.002
+        rotation 0 0 1 1.88557
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1351 0.3753 0.002
+        rotation 0 0 1 1.940841
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1175 0.4168 0.002
+        rotation 0 0 1 2.001786
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.0973 0.4571 0.002
+        rotation 0 0 1 2.069208
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.0743 0.4959 0.002
+        rotation 0 0 1 2.143653
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.0484 0.5326 0.002
+        rotation 0 0 1 2.225352
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.0195 0.5671 0.002
+        rotation 0 0 1 2.314016
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.9875 0.5987 0.002
+        rotation 0 0 1 2.408315
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.9526 0.6272 0.002
+        rotation 0 0 1 2.505595
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.9152 0.6521 0.002
+        rotation 0 0 1 2.602518
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.8755 0.6734 0.002
+        rotation 0 0 1 2.695713
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.8341 0.6911 0.002
+        rotation 0 0 1 2.781919
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.7914 0.7053 0.002
+        rotation 0 0 1 2.859008
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.7477 0.7164 0.002
+        rotation 0 0 1 2.926058
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.7034 0.7248 0.002
+        rotation 0 0 1 2.982837
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.6588 0.7308 0.002
+        rotation 0 0 1 3.029974
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.6139 0.735 0.002
+        rotation 0 0 1 3.068481
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.569 0.7376 0.002
+        rotation 0 0 1 3.099284
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.5239 0.7389 0.002
+        rotation 0 0 1 3.12336
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.4788 0.7394 0.002
+        rotation 0 0 1 -3.141532
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.4337 0.7391 0.002
+        rotation 0 0 1 -3.12823
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.3885 0.7382 0.002
+        rotation 0 0 1 -3.119207
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.3434 0.7371 0.002
+        rotation 0 0 1 -3.113835
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.2983 0.7358 0.002
+        rotation 0 0 1 -3.11155
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.2532 0.7345 0.002
+        rotation 0 0 1 -3.11185
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.208 0.7332 0.002
+        rotation 0 0 1 -3.11428
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.163 0.732 0.002
+        rotation 0 0 1 -3.11841
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.118 0.7311 0.002
+        rotation 0 0 1 -3.123844
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.0729 0.7305 0.002
+        rotation 0 0 1 -3.130223
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.0278 0.7301 0.002
+        rotation 0 0 1 -3.137176
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.0172 0.7301 0.002
+        rotation 0 0 1 3.138847
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.0624 0.7303 0.002
+        rotation 0 0 1 3.131809
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.1075 0.7309 0.002
+        rotation 0 0 1 3.125261
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.1525 0.7318 0.002
+        rotation 0 0 1 3.119571
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.1975 0.7329 0.002
+        rotation 0 0 1 3.115104
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.2426 0.7341 0.002
+        rotation 0 0 1 3.112246
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.2876 0.7355 0.002
+        rotation 0 0 1 3.111405
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.3326 0.7368 0.002
+        rotation 0 0 1 3.113029
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.3777 0.738 0.002
+        rotation 0 0 1 3.117611
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.4228 0.7389 0.002
+        rotation 0 0 1 3.125701
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.468 0.7393 0.002
+        rotation 0 0 1 3.137915
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.5131 0.7391 0.002
+        rotation 0 0 1 -3.128233
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.5582 0.738 0.002
+        rotation 0 0 1 -3.105595
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.6032 0.7357 0.002
+        rotation 0 0 1 -3.076485
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.6482 0.732 0.002
+        rotation 0 0 1 -3.039891
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.6929 0.7264 0.002
+        rotation 0 0 1 -2.994795
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.7373 0.7186 0.002
+        rotation 0 0 1 -2.940307
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.7811 0.7082 0.002
+        rotation 0 0 1 -2.875761
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.8241 0.6947 0.002
+        rotation 0 0 1 -2.801035
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.8659 0.6779 0.002
+        rotation 0 0 1 -2.71683
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.906 0.6575 0.002
+        rotation 0 0 1 -2.625039
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.944 0.6334 0.002
+        rotation 0 0 1 -2.5286
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.9795 0.6057 0.002
+        rotation 0 0 1 -2.430994
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.0122 0.5748 0.002
+        rotation 0 0 1 -2.33581
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.0418 0.541 0.002
+        rotation 0 0 1 -2.245735
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.0685 0.5047 0.002
+        rotation 0 0 1 -2.162308
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.0921 0.4664 0.002
+        rotation 0 0 1 -2.086126
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.113 0.4265 0.002
+        rotation 0 0 1 -2.017179
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1311 0.3853 0.002
+        rotation 0 0 1 -1.954845
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1468 0.343 0.002
+        rotation 0 0 1 -1.898242
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1602 0.3 0.002
+        rotation 0 0 1 -1.846574
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1715 0.2563 0.002
+        rotation 0 0 1 -1.798974
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1807 0.2121 0.002
+        rotation 0 0 1 -1.754736
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.188 0.1677 0.002
+        rotation 0 0 1 -1.713129
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1935 0.1229 0.002
+        rotation 0 0 1 -1.673494
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1973 0.0781 0.002
+        rotation 0 0 1 -1.635309
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1993 0.033 0.002
+        rotation 0 0 1 -1.59793
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1997 -0.0121 0.002
+        rotation 0 0 1 -1.560902
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1984 -0.0571 0.002
+        rotation 0 0 1 -1.523774
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1955 -0.1021 0.002
+        rotation 0 0 1 -1.486018
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1908 -0.1469 0.002
+        rotation 0 0 1 -1.447083
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1843 -0.1916 0.002
+        rotation 0 0 1 -1.406382
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.176 -0.2359 0.002
+        rotation 0 0 1 -1.363452
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1657 -0.2797 0.002
+        rotation 0 0 1 -1.317609
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1533 -0.323 0.002
+        rotation 0 0 1 -1.268
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1388 -0.3656 0.002
+        rotation 0 0 1 -1.213883
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1218 -0.4074 0.002
+        rotation 0 0 1 -1.154365
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.1022 -0.448 0.002
+        rotation 0 0 1 -1.088528
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.0799 -0.4871 0.002
+        rotation 0 0 1 -1.015778
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.0546 -0.5244 0.002
+        rotation 0 0 1 -0.935652
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -1.0264 -0.5594 0.002
+        rotation 0 0 1 -0.848428
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.995 -0.5918 0.002
+        rotation 0 0 1 -0.755252
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.9608 -0.621 0.002
+        rotation 0 0 1 -0.658282
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.9239 -0.6468 0.002
+        rotation 0 0 1 -0.560893
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.8847 -0.6689 0.002
+        rotation 0 0 1 -0.466616
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.8437 -0.6873 0.002
+        rotation 0 0 1 -0.378692
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.8013 -0.7023 0.002
+        rotation 0 0 1 -0.299455
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.7579 -0.7141 0.002
+        rotation 0 0 1 -0.230157
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.7137 -0.723 0.002
+        rotation 0 0 1 -0.171083
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.6692 -0.7296 0.002
+        rotation 0 0 1 -0.121736
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.6244 -0.7342 0.002
+        rotation 0 0 1 -0.081309
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.5794 -0.7371 0.002
+        rotation 0 0 1 -0.048808
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.5343 -0.7387 0.002
+        rotation 0 0 1 -0.023244
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.4892 -0.7393 0.002
+        rotation 0 0 1 -0.003697
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.4442 -0.7392 0.002
+        rotation 0 0 1 0.01067
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.3991 -0.7385 0.002
+        rotation 0 0 1 0.020618
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.354 -0.7374 0.002
+        rotation 0 0 1 0.02679
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.309 -0.7361 0.002
+        rotation 0 0 1 0.029751
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.264 -0.7348 0.002
+        rotation 0 0 1 0.030026
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.219 -0.7335 0.002
+        rotation 0 0 1 0.028075
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.1739 -0.7323 0.002
+        rotation 0 0 1 0.024318
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.1288 -0.7313 0.002
+        rotation 0 0 1 0.019148
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.0836 -0.7306 0.002
+        rotation 0 0 1 0.012952
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation -0.0385 -0.7302 0.002
+        rotation 0 0 1 0.006106
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.0065 -0.73 0.002
+        rotation 0 0 1 -0.001036
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.0515 -0.7303 0.002
+        rotation 0 0 1 -0.008126
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.0966 -0.7308 0.002
+        rotation 0 0 1 -0.014815
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.1417 -0.7316 0.002
+        rotation 0 0 1 -0.020749
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.1868 -0.7326 0.002
+        rotation 0 0 1 -0.025549
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.2318 -0.7338 0.002
+        rotation 0 0 1 -0.028833
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.277 -0.7352 0.002
+        rotation 0 0 1 -0.030194
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.322 -0.7365 0.002
+        rotation 0 0 1 -0.029193
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.3671 -0.7377 0.002
+        rotation 0 0 1 -0.02536
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.4122 -0.7387 0.002
+        rotation 0 0 1 -0.018156
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.4573 -0.7393 0.002
+        rotation 0 0 1 -0.006979
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.5024 -0.7392 0.002
+        rotation 0 0 1 0.00882
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.5474 -0.7384 0.002
+        rotation 0 0 1 0.030025
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.5925 -0.7364 0.002
+        rotation 0 0 1 0.057544
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.6375 -0.733 0.002
+        rotation 0 0 1 0.092278
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.6823 -0.7279 0.002
+        rotation 0 0 1 0.135214
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.7267 -0.7207 0.002
+        rotation 0 0 1 0.187326
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.7706 -0.7109 0.002
+        rotation 0 0 1 0.249346
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.8138 -0.6982 0.002
+        rotation 0 0 1 0.321649
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.856 -0.6823 0.002
+        rotation 0 0 1 0.403745
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.8965 -0.6627 0.002
+        rotation 0 0 1 0.493984
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.9351 -0.6395 0.002
+        rotation 0 0 1 0.589617
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 0.9712 -0.6127 0.002
+        rotation 0 0 1 0.687242
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.0046 -0.5825 0.002
+        rotation 0 0 1 0.783354
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.035 -0.5493 0.002
+        rotation 0 0 1 0.874929
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.0624 -0.5136 0.002
+        rotation 0 0 1 0.96007
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.0868 -0.4757 0.002
+        rotation 0 0 1 1.038008
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1082 -0.4361 0.002
+        rotation 0 0 1 1.108634
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.127 -0.3952 0.002
+        rotation 0 0 1 1.172507
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1433 -0.3532 0.002
+        rotation 0 0 1 1.230374
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1572 -0.3103 0.002
+        rotation 0 0 1 1.283045
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1689 -0.2668 0.002
+        rotation 0 0 1 1.331502
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1786 -0.2228 0.002
+        rotation 0 0 1 1.376459
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1864 -0.1784 0.002
+        rotation 0 0 1 1.418659
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1924 -0.1336 0.002
+        rotation 0 0 1 1.458772
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1965 -0.0887 0.002
+        rotation 0 0 1 1.49733
+        children [
+          USE LINE_SEG
+        ]
+      }
+      Pose {
+        translation 1.1991 -0.0331 0.002
+        rotation 0 0 1 1.54358
+        children [
+          USE LINE_SEG
+        ]
+      }
+    ]
+  }
+}
+DEF TASK1B_ROBOT Robot {
+  translation 1.1999999923678086 -0.0013047180931918133 0.04997841799968408
+  rotation -5.898278322902221e-08 -5.898569385510588e-08 0.9999999999999964 1.5708456736625411
+  children [
+    DEF BODY Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.45 0.85
+        roughness 0.4
+        metalness 0.1
+      }
+      geometry Box {
+        size 0.3 0.15 0.05
+      }
+    }
+    Pose {
+      translation 0.12 0 -0.028
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.08 0.08 0.1
+            roughness 0.7
+            metalness 0
+          }
+          geometry Box {
+            size 0.02 0.1 0.008
+          }
+        }
+      ]
+    }
+    DistanceSensor {
+      translation 0.12 0.035 -0.032
+      rotation 0 1 0 1.5708
+      name "ir_left"
+      lookupTable [
+        0 1000 0
+        0.03 0 0
+      ]
+      type "infra-red"
+      numberOfRays 2
+      aperture 0.5
+    }
+    DistanceSensor {
+      translation 0.12 0 -0.032
+      rotation 0 1 0 1.5708
+      name "ir_center"
+      lookupTable [
+        0 1000 0
+        0.03 0 0
+      ]
+      type "infra-red"
+      numberOfRays 2
+      aperture 0.5
+    }
+    DistanceSensor {
+      translation 0.12 -0.035 -0.032
+      rotation 0 1 0 1.5708
+      name "ir_right"
+      lookupTable [
+        0 1000 0
+        0.03 0 0
+      ]
+      type "infra-red"
+      numberOfRays 2
+      aperture 0.5
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.023999647148152854
+        axis 0 1 0
+        anchor 0.1 0.09 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_fl"
+          maxVelocity 20
+        }
+        PositionSensor {
+          name "enc_fl"
+        }
+      ]
+      endPoint Solid {
+        translation 0.1 0.09 0
+        rotation 0 1 0 0.02399964714815267
+        children [
+          DEF WHEEL Pose {
+            rotation 1 0 0 1.5708
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.1 0.1 0.12
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.03
+                  radius 0.05
+                }
+              }
+            ]
+          }
+        ]
+        name "wheel_fl_solid"
+        contactMaterial "wheel"
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PHYSICS Physics {
+          density -1
+          mass 0.1
+        }
+        linearVelocity -5.8778449583103285e-15 -3.51299438585781e-16 7.105165011915388e-17
+        angularVelocity 4.521722886385006e-17 -1.5859702822098573e-15 4.6928157226665774e-15
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.02399905329760188
+        axis 0 1 0
+        anchor 0.1 -0.09 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_fr"
+          maxVelocity 20
+        }
+        PositionSensor {
+          name "enc_fr"
+        }
+      ]
+      endPoint Solid {
+        translation 0.1 -0.09 0
+        rotation 0 -1 0 0.023999053297608357
+        children [
+          USE WHEEL
+        ]
+        name "wheel_fr_solid"
+        contactMaterial "wheel"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PHYSICS
+        linearVelocity 6.362529110663121e-15 6.465427170306379e-17 2.84214847569096e-16
+        angularVelocity 5.558802929325439e-16 1.585940619237839e-15 2.8554265401260365e-15
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.023999053442753444
+        axis 0 1 0
+        anchor -0.1 0.09 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_rl"
+          maxVelocity 20
+        }
+        PositionSensor {
+          name "enc_rl"
+        }
+      ]
+      endPoint Solid {
+        translation -0.1 0.09 0
+        rotation 0 1 0 0.023999053442760723
+        children [
+          USE WHEEL
+        ]
+        name "wheel_rl_solid"
+        contactMaterial "wheel"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PHYSICS
+        linearVelocity -6.063723035871786e-15 -5.135253660243469e-17 2.6913920366331584e-21
+        angularVelocity -3.198845612088238e-16 4.758181334870971e-15 6.688501218147012e-15
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.023999647455639744
+        axis 0 1 0
+        anchor -0.1 -0.09 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_rr"
+          maxVelocity 20
+        }
+        PositionSensor {
+          name "enc_rr"
+        }
+      ]
+      endPoint Solid {
+        translation -0.1 -0.09 0
+        rotation 0 -0.9999999999999999 0 0.023999647455640837
+        children [
+          USE WHEEL
+        ]
+        name "wheel_rr_solid"
+        contactMaterial "wheel"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PHYSICS
+        linearVelocity 5.8444870797846656e-15 2.9928155334614697e-16 -2.8421933967724326e-16
+        angularVelocity 4.97820420199133e-16 -9.225680813226001e-20 6.326066496297267e-16
+      }
+    }
+  ]
+  name "task1b_robot"
+  boundingObject USE BODY
+  physics Physics {
+    density -1
+    mass 1.5
+    centerOfMass [
+      0 0 -0.02
+    ]
+  }
+  controller "line_follower"
+  linearVelocity -5.486154113009904e-15 3.8458880068826387e-17 5.684341886080802e-17
+  angularVelocity -6.119897783038755e-20 1.705302562804262e-15 8.184184376991525e-15
+}

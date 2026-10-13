@@ -1,0 +1,326 @@
+#VRML_SIM R2025a utf8
+
+# Task 1a - Keyboard controlled robot.
+# This world uses ONLY Webots base nodes - there are no external PROTO
+# declarations, so nothing is downloaded or looked up in the Webots
+# installation folder and it opens offline on any install.
+
+WorldInfo {
+  info [
+    "Task 1a - Keyboard controlled robot"
+    "Body  : 0.30 x 0.15 x 0.05 m (l x b x h)"
+    "Wheels: 0.03 m thick, 0.05 m radius"
+    "W/A/S/D to drive, SPACE to brake."
+  ]
+  title "Task 1a - Keyboard Controlled Robot"
+  basicTimeStep 16
+  coordinateSystem "ENU"
+  contactProperties [
+    ContactProperties {
+      material1 "wheel"
+      material2 "default"
+      coulombFriction [
+        1.5
+      ]
+      softCFM 0.0001
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.7796 0.3229 0.5367 1.3146
+  position 1.2 -1.2 0.9
+  follow "task1a_robot"
+  followType "Tracking Shot"
+}
+Background {
+  skyColor [
+    0.21 0.27 0.36
+  ]
+}
+DirectionalLight {
+  ambientIntensity 0.55
+  direction -0.6 -0.5 -1
+  intensity 2.5
+  castShadows TRUE
+}
+DirectionalLight {
+  ambientIntensity 0.3
+  direction 0.7 0.5 -0.6
+  intensity 1.2
+}
+# ---------------- floor : 4 x 4 m, top surface exactly at z = 0 ----------------
+Solid {
+  translation 0 0 -0.01
+  children [
+    DEF FLOOR Shape {
+      appearance PBRAppearance {
+        baseColor 0.82 0.83 0.85
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 4 4 0.02
+      }
+    }
+  ]
+  name "floor"
+  boundingObject USE FLOOR
+}
+# ---------------- arena walls ----------------
+Solid {
+  translation 0 2.01 0.06
+  children [
+    DEF WALL Shape {
+      appearance PBRAppearance {
+        baseColor 0.38 0.41 0.47
+        roughness 0.8
+        metalness 0
+      }
+      geometry Box {
+        size 4.04 0.02 0.12
+      }
+    }
+  ]
+  name "wall_north"
+  boundingObject USE WALL
+}
+Solid {
+  translation 0 -2.01 0.06
+  children [
+    USE WALL
+  ]
+  name "wall_south"
+  boundingObject USE WALL
+}
+Solid {
+  translation 2.01 0 0.06
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL
+  ]
+  name "wall_east"
+  boundingObject USE WALL
+}
+Solid {
+  translation -2.01 0 0.06
+  rotation 0 0 1 1.5708
+  children [
+    USE WALL
+  ]
+  name "wall_west"
+  boundingObject USE WALL
+}
+# ---------------- corner posts : give the eye something to judge motion by ----
+Solid {
+  translation 1.3 1.3 0.075
+  children [
+    DEF POST Shape {
+      appearance PBRAppearance {
+        baseColor 0.95 0.45 0.1
+        roughness 0.6
+        metalness 0
+      }
+      geometry Cylinder {
+        height 0.15
+        radius 0.03
+        subdivision 24
+      }
+    }
+  ]
+  name "post_ne"
+  boundingObject USE POST
+}
+Solid {
+  translation 1.3 -1.3 0.075
+  children [
+    USE POST
+  ]
+  name "post_se"
+  boundingObject USE POST
+}
+Solid {
+  translation -1.3 1.3 0.075
+  children [
+    USE POST
+  ]
+  name "post_nw"
+  boundingObject USE POST
+}
+Solid {
+  translation -1.3 -1.3 0.075
+  children [
+    USE POST
+  ]
+  name "post_sw"
+  boundingObject USE POST
+}
+# ============================== the robot ==============================
+DEF TASK1A_ROBOT Robot {
+  translation 0 0 0.05
+  rotation 0 0 1 0
+  children [
+    # ---------------- chassis : 0.3 (l) x 0.15 (b) x 0.05 (h) metres ----------------
+    DEF BODY Shape {
+      appearance PBRAppearance {
+        baseColor 0.18 0.45 0.85
+        roughness 0.4
+        metalness 0.1
+      }
+      geometry Box {
+        size 0.3 0.15 0.05
+      }
+    }
+    # ---------------- front marker (shows which way is "forward") ----------------
+    Pose {
+      translation 0.145 0 0.02
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 1 0.75 0
+            roughness 0.4
+            metalness 0
+            emissiveColor 0.35 0.25 0
+          }
+          geometry Box {
+            size 0.015 0.09 0.012
+          }
+        }
+      ]
+    }
+    # ---------------- front-left wheel ----------------
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.1 0.09 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_fl"
+          maxVelocity 20
+        }
+        PositionSensor {
+          name "enc_fl"
+        }
+      ]
+      endPoint Solid {
+        translation 0.1 0.09 0
+        children [
+          # Cylinder axis is Z in this world; rotate it so the axis lies along Y
+          # (the hinge axis), otherwise the disc tumbles instead of spinning.
+          DEF WHEEL Pose {
+            rotation 1 0 0 1.5708
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.1 0.1 0.12
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.03
+                  radius 0.05
+                  subdivision 36
+                }
+              }
+            ]
+          }
+        ]
+        name "wheel_fl_solid"
+        contactMaterial "wheel"
+        boundingObject USE WHEEL
+        physics DEF WHEEL_PHYSICS Physics {
+          density -1
+          mass 0.1
+        }
+      }
+    }
+    # ---------------- front-right wheel ----------------
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor 0.1 -0.09 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_fr"
+          maxVelocity 20
+        }
+        PositionSensor {
+          name "enc_fr"
+        }
+      ]
+      endPoint Solid {
+        translation 0.1 -0.09 0
+        children [
+          USE WHEEL
+        ]
+        name "wheel_fr_solid"
+        contactMaterial "wheel"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PHYSICS
+      }
+    }
+    # ---------------- rear-left wheel ----------------
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -0.1 0.09 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_rl"
+          maxVelocity 20
+        }
+        PositionSensor {
+          name "enc_rl"
+        }
+      ]
+      endPoint Solid {
+        translation -0.1 0.09 0
+        children [
+          USE WHEEL
+        ]
+        name "wheel_rl_solid"
+        contactMaterial "wheel"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PHYSICS
+      }
+    }
+    # ---------------- rear-right wheel ----------------
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        axis 0 1 0
+        anchor -0.1 -0.09 0
+      }
+      device [
+        RotationalMotor {
+          name "wheel_rr"
+          maxVelocity 20
+        }
+        PositionSensor {
+          name "enc_rr"
+        }
+      ]
+      endPoint Solid {
+        translation -0.1 -0.09 0
+        children [
+          USE WHEEL
+        ]
+        name "wheel_rr_solid"
+        contactMaterial "wheel"
+        boundingObject USE WHEEL
+        physics USE WHEEL_PHYSICS
+      }
+    }
+  ]
+  name "task1a_robot"
+  boundingObject USE BODY
+  physics Physics {
+    density -1
+    mass 1.5
+    centerOfMass [
+      0 0 -0.02
+    ]
+  }
+  controller "keyboard_controller"
+}
